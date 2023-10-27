@@ -102,6 +102,37 @@ body {
 }
 
 .meme {
+    position: relative;
+}
+
+.meme-img {
     height: 60rem;
     width: 100rem;
+}
+
+.meme-text {
+    position: absolute;
+    font-family: Impact, sans-serif;
+    font-size: 4.8rem;
+    font-weight: bold;
+    width: 70%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: white;
+    text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+        -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000,
+        -2px 0 0 #000, 2px 2px 5px #000;
+}
+
+.top {
+    top: 2rem;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.bottom {
+    bottom: 2rem;
+    right: 50%;
+    transform: translateX(50%);
 }
