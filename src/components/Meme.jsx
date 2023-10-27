@@ -7,6 +7,14 @@ function Meme() {
         url: "http://i.imgflip.com/1bij.jpg",
     });
 
+    const [memesData, setMemesData] = useState([]);
+
+    useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then((res) => res.json())
+            .then((data) => setMemesData(data.data.memes));
+    }, []);
+
     function handleChange(event) {
         const { name, value } = event.target;
 
@@ -14,6 +22,20 @@ function Meme() {
             return {
                 ...prev,
                 [name]: value,
+            };
+        });
+    }
+
+    function handleClick(event) {
+        event.preventDefault();
+        console.log("Meme changed");
+        const randomNum = Math.floor(Math.random() * memesData.length);
+        const randomMeme = memesData[randomNum];
+
+        setMeme((prev) => {
+            return {
+                ...prev,
+                url: randomMeme.url,
             };
         });
     }
@@ -39,7 +61,7 @@ function Meme() {
                         onChange={handleChange}
                     />
                 </div>
-                <button type="submit" className="meme-submit">
+                <button onClick={handleClick} className="meme-submit">
                     Get a new meme image 🖼️
                 </button>
             </form>
